@@ -1,9 +1,9 @@
 package com.gatkowski.nbpapispring.gold;
-
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Service
 public class GoldService {
@@ -14,17 +14,11 @@ public class GoldService {
     }
 
     public Mono<Gold> getRates(String nLastDays) {
+        BigDecimal divisor = new BigDecimal(14);
         return goldClient.queryNbpForGoldPrice(nLastDays)
                 .map(nbpGold::getCena)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .map(p -> p.divide(divisor, RoundingMode.HALF_EVEN))
                 .map(Gold::new);
-//                .flatMap(nbpRates -> {
-//                    final Rates rates = new Rates();
-//                    rates.setPair(nbpRates.getCode());
-//                    rates.setRates(nbpRates.getRates().stream()
-//                            .map(p -> new Rate(p.getEffectiveDate(), p.getMid()))
-//                            .collect(Collectors.toList()));
-//                    return Mono.just(rates);
-//                });
     }
 }
