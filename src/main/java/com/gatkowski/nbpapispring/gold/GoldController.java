@@ -16,6 +16,6 @@ public class GoldController {
 
     @GetMapping(value = "gold", produces = "application/json")
     public Mono<Gold> getRates() {
-        return goldService.getRates("14");
+        return goldService.getAverageGoldPrice("14");
     }
 }

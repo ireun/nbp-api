@@ -13,8 +13,8 @@ public class CurrencyService {
         this.currencyClient = currencyClient;
     }
 
-    public Mono<Rates> getRates(String code, String nLastDays) {
-        return currencyClient.queryNbpForExchangeRates(code, nLastDays)
+    private Mono<Rates> convert(Mono<NBPRates> nbpRatesMono) {
+        return nbpRatesMono
                 .flatMap(nbpRates -> {
                     final Rates rates = new Rates();
                     rates.setPair(nbpRates.getCode());
@@ -23,5 +23,9 @@ public class CurrencyService {
                             .collect(Collectors.toList()));
                     return Mono.just(rates);
                 });
+    }
+
+    public Mono<Rates> getRates(String code, String nLastDays) {
+        return convert(currencyClient.queryNbpForExchangeRates(code, nLastDays));
     }
 }
