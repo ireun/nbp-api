@@ -24,6 +24,6 @@ public class CurrencyController {
 
     @ExceptionHandler
     public ResponseEntity<String> handle(InvalidCurrencyException ex) {
-        return new ResponseEntity<>("Invalid currency code provided!", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 }
