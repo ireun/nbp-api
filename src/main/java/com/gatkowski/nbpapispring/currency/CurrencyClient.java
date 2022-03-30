@@ -19,11 +19,15 @@ public class CurrencyClient {
         this.builder = builder;
     }
 
-    public Mono<NBPRates> queryNbpForExchangeRates(String currencySymbol, String nLastDays) {
+    private WebClient initializeClient() {
         return builder
                 .defaultHeader(HttpHeaders.ACCEPT, String.valueOf(HttpHeaderValues.APPLICATION_JSON))
                 .clientConnector(new ReactorClientHttpConnector(HttpClient.newConnection().compress(true)))
-                .build()
+                .build();
+    }
+
+    public Mono<NBPRates> queryNbpForExchangeRates(String currencySymbol, int nLastDays) {
+        return initializeClient()
                 .get()
                 .uri(URI.create("https://api.nbp.pl/api/exchangerates/rates/a/" + currencySymbol + "/last/" + nLastDays))
                 .retrieve()

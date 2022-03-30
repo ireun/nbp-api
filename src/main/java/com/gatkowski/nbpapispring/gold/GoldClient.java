@@ -19,11 +19,15 @@ public class GoldClient {
         this.builder = builder;
     }
 
-    public Flux<NBPGold> queryNbpForGoldPrice(String nLastDays) {
+    private WebClient initializeClient() {
         return builder
                 .defaultHeader(HttpHeaders.ACCEPT, String.valueOf(HttpHeaderValues.APPLICATION_JSON))
                 .clientConnector(new ReactorClientHttpConnector(HttpClient.newConnection().compress(true)))
-                .build()
+                .build();
+    }
+
+    public Flux<NBPGold> queryNbpForGoldPrice(int nLastDays) {
+        return initializeClient()
                 .get()
                 .uri(URI.create("https://api.nbp.pl/api/cenyzlota/last/" + nLastDays))
                 .retrieve()

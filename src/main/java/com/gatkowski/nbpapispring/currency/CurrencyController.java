@@ -17,7 +17,7 @@ public class CurrencyController {
 
     @GetMapping(value = "exchange-rates/{code}", produces = "application/json")
     public Mono<Rates> getRates(@PathVariable String code) {
-        return currencyService.getRates(code, "5")
+        return currencyService.getRates(code, 5)
                 .onErrorResume(WebClientResponseException.class,
                         ex -> ex.getRawStatusCode() == 404 ? Mono.error(new InvalidCurrencyException()) : Mono.error(ex));
     }

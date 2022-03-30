@@ -16,16 +16,17 @@ public class CurrencyService {
     private Mono<Rates> convert(Mono<NBPRates> nbpRatesMono) {
         return nbpRatesMono
                 .flatMap(nbpRates -> {
-                    final Rates rates = new Rates();
-                    rates.setPair(nbpRates.getCode());
-                    rates.setRateList(nbpRates.getRates().stream()
-                            .map(p -> new Rate(p.getEffectiveDate(), p.getMid()))
-                            .collect(Collectors.toList()));
+                    final Rates rates = new Rates(
+                            nbpRates.getCode(),
+                            nbpRates.getRates().stream()
+                                    .map(NBPRate::toRate)
+                                    .collect(Collectors.toList())
+                    );
                     return Mono.just(rates);
                 });
     }
 
-    public Mono<Rates> getRates(String code, String nLastDays) {
+    public Mono<Rates> getRates(String code, int nLastDays) {
         return convert(currencyClient.queryNbpForExchangeRates(code, nLastDays));
     }
 }

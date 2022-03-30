@@ -5,8 +5,8 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public class Rate {
-    private LocalDate date;
-    private BigDecimal value;
+    private final LocalDate date;
+    private final BigDecimal value;
 
     public Rate(LocalDate date, BigDecimal value) {
         this.date = date;
@@ -17,16 +17,8 @@ public class Rate {
         return date;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     public BigDecimal getValue() {
         return BigDecimal.ONE.divide(value, 5, RoundingMode.HALF_EVEN);
-    }
-
-    public void setValue(BigDecimal value) {
-        this.value = value;
     }
 
 }

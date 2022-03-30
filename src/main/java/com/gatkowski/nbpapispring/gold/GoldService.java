@@ -9,13 +9,7 @@ import java.math.RoundingMode;
 
 @Service
 public class GoldService {
-    private final GoldClient goldClient;
-
-    public GoldService(GoldClient goldClient) {
-        this.goldClient = goldClient;
-    }
-
-    private Mono<Gold> calculateAvgGoldPrice(Flux<NBPGold> nbpGoldFlux, String nLastDays) {
+    public Mono<Gold> calculateAvgGoldPrice(Flux<NBPGold> nbpGoldFlux, int nLastDays) {
         BigDecimal divisor = new BigDecimal(nLastDays);
         return nbpGoldFlux.map(NBPGold::getCena)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
@@ -23,8 +17,7 @@ public class GoldService {
                 .map(Gold::new);
     }
 
-    public Mono<Gold> getAverageGoldPrice(String nLastDays) {
-        Flux<NBPGold> nbpGoldFlux = goldClient.queryNbpForGoldPrice(nLastDays);
+    public Mono<Gold> getAverageGoldPrice(Flux<NBPGold> nbpGoldFlux, int nLastDays) {
         return calculateAvgGoldPrice(nbpGoldFlux, nLastDays);
     }
 }

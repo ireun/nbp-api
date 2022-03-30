@@ -10,15 +10,7 @@ public class NBPRates {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public List<NBPRate> getRates() {
         return rates;
-    }
-
-    public void setRates(List<NBPRate> rates) {
-        this.rates = rates;
     }
 }

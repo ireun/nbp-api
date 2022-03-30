@@ -7,6 +7,11 @@ public class NBPGold {
     private LocalDate data;
     private BigDecimal cena;
 
+    public NBPGold(LocalDate data, BigDecimal cena) {
+        this.data = data;
+        this.cena = cena;
+    }
+
     public LocalDate getData() {
         return data;
     }
