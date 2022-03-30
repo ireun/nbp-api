@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Rates {
     String pair;
-    private List<Rate> rates;
+    private List<Rate> rateList;
 
     public String getPair() {
         return "PLN/" + pair;
@@ -14,11 +14,11 @@ public class Rates {
         this.pair = pair;
     }
 
-    public List<Rate> getRates() {
-        return rates;
+    public List<Rate> getRateList() {
+        return rateList;
     }
 
-    public void setRates(List<Rate> rates) {
-        this.rates = rates;
+    public void setRateList(List<Rate> rateList) {
+        this.rateList = rateList;
     }
 }

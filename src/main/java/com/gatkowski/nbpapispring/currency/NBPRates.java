@@ -2,9 +2,9 @@ package com.gatkowski.nbpapispring.currency;
 
 import java.util.List;
 
-public class nbpRates {
+public class NBPRates {
     String code;
-    private List<nbpRate> rates;
+    private List<NBPRate> rates;
 
     public String getCode() {
         return code;
@@ -14,11 +14,11 @@ public class nbpRates {
         this.code = code;
     }
 
-    public List<nbpRate> getRates() {
+    public List<NBPRate> getRates() {
         return rates;
     }
 
-    public void setRates(List<nbpRate> rates) {
+    public void setRates(List<NBPRate> rates) {
         this.rates = rates;
     }
 }

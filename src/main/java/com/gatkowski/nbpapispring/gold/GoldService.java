@@ -16,7 +16,7 @@ public class GoldService {
     public Mono<Gold> getRates(String nLastDays) {
         BigDecimal divisor = new BigDecimal(14);
         return goldClient.queryNbpForGoldPrice(nLastDays)
-                .map(nbpGold::getCena)
+                .map(NBPGold::getCena)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .map(p -> p.divide(divisor, RoundingMode.HALF_EVEN))
                 .map(Gold::new);

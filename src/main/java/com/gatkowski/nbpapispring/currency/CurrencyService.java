@@ -18,7 +18,7 @@ public class CurrencyService {
                 .flatMap(nbpRates -> {
                     final Rates rates = new Rates();
                     rates.setPair(nbpRates.getCode());
-                    rates.setRates(nbpRates.getRates().stream()
+                    rates.setRateList(nbpRates.getRates().stream()
                             .map(p -> new Rate(p.getEffectiveDate(), p.getMid()))
                             .collect(Collectors.toList()));
                     return Mono.just(rates);

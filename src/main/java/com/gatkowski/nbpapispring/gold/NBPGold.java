@@ -3,7 +3,7 @@ package com.gatkowski.nbpapispring.gold;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class nbpGold {
+public class NBPGold {
     private LocalDate data;
     private BigDecimal cena;
 

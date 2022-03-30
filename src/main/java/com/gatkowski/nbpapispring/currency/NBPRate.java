@@ -3,11 +3,11 @@ package com.gatkowski.nbpapispring.currency;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class nbpRate {
+public class NBPRate {
     private LocalDate effectiveDate;
     private BigDecimal mid;
 
-    public nbpRate(LocalDate date, BigDecimal value) {
+    public NBPRate(LocalDate date, BigDecimal value) {
         this.effectiveDate = date;
         this.mid = value;
     }
