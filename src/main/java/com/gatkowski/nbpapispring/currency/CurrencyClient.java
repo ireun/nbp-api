@@ -9,7 +9,6 @@ import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
 
 import java.net.URI;
-import java.util.concurrent.ExecutionException;
 
 
 @Component
@@ -20,7 +19,7 @@ public class CurrencyClient {
         this.builder = builder;
     }
 
-    public Mono<nbpRates> queryNbpForExchangeRates(String currencySymbol, String nLastDays) throws ExecutionException, InterruptedException {
+    public Mono<nbpRates> queryNbpForExchangeRates(String currencySymbol, String nLastDays) {
         return builder
                 .defaultHeader(HttpHeaders.ACCEPT, String.valueOf(HttpHeaderValues.APPLICATION_JSON))
                 .clientConnector(new ReactorClientHttpConnector(HttpClient.newConnection().compress(true)))

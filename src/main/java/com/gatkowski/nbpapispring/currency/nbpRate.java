@@ -1,22 +1,22 @@
 package com.gatkowski.nbpapispring.currency;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.time.LocalDate;
 
 public class nbpRate {
-    private String effectiveDate;
+    private LocalDate effectiveDate;
     private BigDecimal mid;
 
-    public nbpRate(String date, BigDecimal value) {
+    public nbpRate(LocalDate date, BigDecimal value) {
         this.effectiveDate = date;
         this.mid = value;
     }
 
-    public String getEffectiveDate() {
+    public LocalDate getEffectiveDate() {
         return effectiveDate;
     }
 
-    public void setEffectiveDate(String effectiveDate) {
+    public void setEffectiveDate(LocalDate effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 

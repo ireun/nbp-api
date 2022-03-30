@@ -1,19 +1,17 @@
 package com.gatkowski.nbpapispring.currency;
 
-import reactor.core.publisher.Mono;
-
 import java.util.List;
 
 public class Rates {
-    String code;
+    String pair;
     private List<Rate> rates;
 
-    public String getCode() {
-        return code;
+    public String getPair() {
+        return "PLN/" + pair;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setPair(String pair) {
+        this.pair = pair;
     }
 
     public List<Rate> getRates() {
