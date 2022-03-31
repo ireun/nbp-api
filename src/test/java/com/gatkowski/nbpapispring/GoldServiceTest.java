@@ -27,7 +27,7 @@ class GoldServiceTest {
     void shouldReturnCorrectValue() {
         Flux<NBPGold> nbpGoldFlux = Flux.just(new NBPGold(LocalDate.now(), BigDecimal.TEN),
                 new NBPGold(LocalDate.now(), BigDecimal.ZERO));
-        Mono<Gold> goldMono = goldService.calculateAvgGoldPrice(nbpGoldFlux, 2);
+        Mono<Gold> goldMono = goldService.getAverageGoldPrice(nbpGoldFlux, 2);
 
         StepVerifier
                 .create(goldMono)
