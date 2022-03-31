@@ -28,7 +28,7 @@ class GoldServiceUnitTest {
     private GoldService goldService;
 
     @Test
-    public void shouldReturnCorrectAvg() {
+    void shouldReturnCorrectAvg() {
         Flux<NBPGold> nbpGoldFlux = Flux.just(new NBPGold(LocalDate.now(), BigDecimal.valueOf(100)),
                 new NBPGold(LocalDate.now(), BigDecimal.valueOf(0)),
                 new NBPGold(LocalDate.now(), BigDecimal.valueOf(200)));
