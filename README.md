@@ -1,4 +1,4 @@
-# NBP Api implemented in Spring
+# NBP Api implemented in Spring Reactive
 
 ## How to build:
 `.\gradlew build`
