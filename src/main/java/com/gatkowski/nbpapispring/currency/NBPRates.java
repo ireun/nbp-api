@@ -3,8 +3,14 @@ package com.gatkowski.nbpapispring.currency;
 import java.util.List;
 
 public class NBPRates {
-    String code;
-    private List<NBPRate> rates;
+
+    final String code;
+    private final List<NBPRate> rates;
+
+    public NBPRates(String code, List<NBPRate> rates) {
+        this.code = code;
+        this.rates = rates;
+    }
 
     public String getCode() {
         return code;
