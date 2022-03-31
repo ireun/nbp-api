@@ -17,9 +17,9 @@ Server by default runs on localhost:8080. Below you can find a list of endpoints
 
 ## How to build docker image
 1. Clone the repo
-2. cd to the path where you've cloned the repo
-3. run `docker build .`
+2. `cd` to the path where you've cloned the repo
+3. Run `docker build .`
 
 ## How to deploy to k8s
-1. run `kubectl apply -f deployment.yaml`
-2. forward port from the pod `kubectl port-forward svc/nbp-api-spring 8080:8080`
+1. Run `kubectl apply -f deployment.yaml`
+2. Forward port from the pod `kubectl port-forward svc/nbp-api-spring 8080:8080`
