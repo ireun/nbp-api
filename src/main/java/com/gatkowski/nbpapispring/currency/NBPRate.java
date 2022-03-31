@@ -3,6 +3,9 @@ package com.gatkowski.nbpapispring.currency;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * Representation of NBP Api currency exchange rate
+ */
 public class NBPRate {
     private final LocalDate effectiveDate;
     private final BigDecimal mid;

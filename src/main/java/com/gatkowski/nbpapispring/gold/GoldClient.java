@@ -26,6 +26,12 @@ public class GoldClient {
                 .build();
     }
 
+    /**
+     * Queries NBP Api for gold prices
+     *
+     * @param nLastDays number of days to be queried
+     * @return {@code Flux} containing {@code NBPGold}
+     */
     public Flux<NBPGold> queryNbpForGoldPrice(int nLastDays) {
         return initializeClient()
                 .get()

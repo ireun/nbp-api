@@ -3,6 +3,10 @@ package com.gatkowski.nbpapispring.gold;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+
+/**
+ * Representation of NBP Api Gold price
+ */
 public class NBPGold {
     private LocalDate data;
     private BigDecimal cena;

@@ -26,6 +26,13 @@ public class CurrencyClient {
                 .build();
     }
 
+    /**
+     * Queries NBP Api for exchange rates
+     *
+     * @param currencySymbol currency symbol to query, ISO 4217 format
+     * @param nLastDays number of days to be queried
+     * @return {@code Mono} containing NBPRates for {@code currencySymbol}/PLN pair
+     */
     public Mono<NBPRates> queryNbpForExchangeRates(String currencySymbol, int nLastDays) {
         return initializeClient()
                 .get()

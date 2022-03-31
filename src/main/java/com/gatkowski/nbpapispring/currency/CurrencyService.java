@@ -20,7 +20,7 @@ public class CurrencyService {
                             nbpRates.getCode(),
                             nbpRates.getRates().stream()
                                     .map(NBPRate::toRate)
-                                    .collect(Collectors.toList())
+                                    .toList()
                     );
                     return Mono.just(rates);
                 });

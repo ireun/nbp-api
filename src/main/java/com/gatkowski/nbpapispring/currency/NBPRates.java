@@ -2,6 +2,9 @@ package com.gatkowski.nbpapispring.currency;
 
 import java.util.List;
 
+/**
+ * Representation of NBP API currency exchange response
+ */
 public class NBPRates {
 
     final String code;
