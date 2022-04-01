@@ -12,6 +12,42 @@ Server by default runs on localhost:8080. Below you can find a list of endpoints
 * `GET /api/exchange-rates/{currency_code}` - returns currency exchange rate PLN to `{currencyCode}` for the last 5 business days. 
     * `{currencyCode}` needs to be in ISO 4217 format.
 
+## Examples
+### `/api/gold/`
+```json
+{
+    "price": 265.61929
+}
+```
+### `/api/exchange-rates/USD`
+```json
+{
+    "pair": "PLN/USD",
+    "rateList": [
+        {
+            "date": "2022-03-28",
+            "value": 0.23373
+        },
+        {
+            "date": "2022-03-29",
+            "value": 0.23301
+        },
+        {
+            "date": "2022-03-30",
+            "value": 0.23988
+        },
+        {
+            "date": "2022-03-31",
+            "value": 0.23923
+        },
+        {
+            "date": "2022-04-01",
+            "value": 0.23822
+        }
+    ]
+}
+```
+
 ## How to run in docker
 1. `docker pull ireun/nbp-api-spring:latest`
 2. `docker run -p 8080:8080 ireun/nbp-api-spring:latest`
