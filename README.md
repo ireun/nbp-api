@@ -9,8 +9,8 @@
 ## How to use:
 Server by default runs on localhost:8080. Below you can find a list of endpoints:
 * `GET /api/gold` - returns average gold price in PLN for the last 14 days.
-* `GET /api/exchange-rates/{currency_code}` - returns currency exchange rate PLN to `{currencyCode}` for the last 5 business days. 
-    * `{currencyCode}` needs to be in ISO 4217 format.
+* `GET /api/exchange-rates/{currency_code}` - returns currency exchange rates of PLN to `{currencyCode}` for the last 5 business days.
+  * `{currencyCode}` needs to be in ISO 4217 format.
 
 ## Examples
 ### `/api/gold/`

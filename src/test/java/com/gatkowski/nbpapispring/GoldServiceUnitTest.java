@@ -14,6 +14,7 @@ import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 import static org.mockito.Mockito.when;
@@ -39,7 +40,7 @@ class GoldServiceUnitTest {
 
         StepVerifier
                 .create(goldMono)
-                .expectNextMatches(p -> p.getPrice().equals(new BigDecimal(100).setScale(5)))
+                .expectNextMatches(p -> p.getPrice().equals(new BigDecimal(100).setScale(5, RoundingMode.HALF_UP)))
                 .expectComplete()
                 .verify();
     }
