@@ -1,6 +1,7 @@
 package com.gatkowski.nbpapispring.gold;
 
 import io.netty.handler.codec.http.HttpHeaderValues;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,8 @@ import java.net.URI;
 @Component
 public class GoldClient {
     private final WebClient.Builder builder;
+    @Value("${nbp.goldUrl:https://api.nbp.pl/api/cenyzlota/last/}")
+    private String nbpUrl;
 
     public GoldClient(WebClient.Builder builder) {
         this.builder = builder;
@@ -35,7 +38,7 @@ public class GoldClient {
     public Flux<NBPGold> queryNbpForGoldPrice(int nLastDays) {
         return initializeClient()
                 .get()
-                .uri(URI.create("https://api.nbp.pl/api/cenyzlota/last/" + nLastDays))
+                .uri(URI.create(nbpUrl + nLastDays))
                 .retrieve()
                 .bodyToFlux(NBPGold.class);
     }
